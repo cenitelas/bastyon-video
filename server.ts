@@ -128,6 +128,7 @@ import { LiveManager } from './server/lib/live'
 import { HttpStatusCode } from './shared/models/http/http-error-codes'
 import { VideosTorrentCache } from '@server/lib/files-cache/videos-torrent-cache'
 import { ServerConfigManager } from '@server/lib/server-config-manager'
+import { VideoDistributor } from "@server/lib/video-distributor/video-distributor"
 
 // ----------- Command line -----------
 
@@ -301,6 +302,9 @@ async function startApplication () {
   Redis.Instance.init()
 
   PeerTubeSocket.Instance.init(server)
+
+  // VideoDistributor initialization
+  VideoDistributor.Instance.init(server, Redis.Instance.getClient())
 
   updateStreamingPlaylistsInfohashesIfNeeded()
     .catch(err => logger.error('Cannot update streaming playlist infohashes.', { err }))

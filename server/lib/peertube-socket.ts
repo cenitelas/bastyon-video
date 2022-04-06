@@ -60,7 +60,6 @@ class PeerTubeSocket {
     if (!sockets) return
 
     logger.debug('Sending user notification to user %d.', userId)
-
     const notificationMessage = notification.toFormattedJSON()
     for (const socket of sockets) {
       socket.emit('new-notification', notificationMessage)
@@ -70,7 +69,6 @@ class PeerTubeSocket {
   sendVideoLiveNewState (video: MVideo) {
     const data: LiveVideoEventPayload = { state: video.state }
     const type: LiveVideoEventType = 'state-change'
-
     logger.debug('Sending video live new state notification of %s.', video.url, { state: video.state })
 
     this.liveVideosNamespace
@@ -81,7 +79,6 @@ class PeerTubeSocket {
   sendVideoViewsUpdate (video: MVideo) {
     const data: LiveVideoEventPayload = { views: video.views }
     const type: LiveVideoEventType = 'views-change'
-
     logger.debug('Sending video live views update notification of %s.', video.url, { views: video.views })
 
     this.liveVideosNamespace

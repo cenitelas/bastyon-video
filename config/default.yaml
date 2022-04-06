@@ -36,10 +36,10 @@ trust_proxy:
 
 # Your database name will be database.name OR "peertube"+database.suffix
 database:
-  hostname: 'localhost'
-  port: 5432
+  hostname: '192.168.1.2'
+  port: 5434
   ssl: false
-  suffix: '_dev'
+  suffix: '_test'
   username: 'peertube'
   password: 'peertube'
   pool:

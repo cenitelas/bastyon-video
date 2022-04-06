@@ -18,7 +18,7 @@ rates_limit:
 
 database:
   hostname: 'localhost'
-  port: 5432
+  port: 5434
 
 redis:
   hostname: 'localhost'
